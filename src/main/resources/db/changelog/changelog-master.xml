@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.27.xsd">
+
+    <include file="v1.0/001-create-users-table.xml" relativeToChangelogFile="true"/>
+    <include file="v1.0/002-create-user-preferences-table.xml" relativeToChangelogFile="true"/>
+    <include file="v1.0/003-create-airports-table.xml" relativeToChangelogFile="true"/>
+    <include file="v1.0/004-import-airports-data.xml" relativeToChangelogFile="true"/>
+    <include file="v1.0/005-create-saved-searches-table.xml" relativeToChangelogFile="true"/>
+    <include file="v1.0/006-create-search-history-table.xml" relativeToChangelogFile="true"/>
+    <include file="v1.0/007-create-price-alerts-table.xml" relativeToChangelogFile="true"/>
+    <include file="v1.0/008-create-alert-notifications-table.xml" relativeToChangelogFile="true"/>
+
+</databaseChangeLog>
