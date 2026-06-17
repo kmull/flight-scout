@@ -28,6 +28,7 @@
 	</scm>
 	<properties>
 		<java.version>25</java.version>
+<!--		<liquibase.version>4.27.0</liquibase.version>-->
 	</properties>
 	<dependencies>
 		<dependency>
