@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd">
+
+    <changeSet id="alert_notifications-v1.0" author="kmuller">
+        <createTable tableName="alert_notifications">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="price_alert_id" type="BIGINT">
+                <constraints nullable="false" foreignKeyName="fk_alert_notifications_price_alert" references="price_alerts(id)"/>
+            </column>
+            <column name="found_price" type="NUMERIC(10,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email_sent_at" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="flight_details" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createIndex indexName="idx_alert_notifications_price_alert_id" tableName="alert_notifications">
+            <column name="price_alert_id"/>
+        </createIndex>
+    </changeSet>
+
+</databaseChangeLog>
