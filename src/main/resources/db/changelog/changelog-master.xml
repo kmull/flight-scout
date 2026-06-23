@@ -13,4 +13,7 @@
     <include file="classpath:db/changelog/v1/create-price-alerts-table.xml"/>
     <include file="classpath:db/changelog/v1/create-alert-notifications-table.xml"/>
 
+    <include file="classpath:db/changelog/v1/insert-airports-data.xml"/>
+
+
 </databaseChangeLog>
