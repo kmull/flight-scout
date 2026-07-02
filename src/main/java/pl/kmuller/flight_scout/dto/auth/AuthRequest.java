@@ -1,4 +1,4 @@
-package pl.kmuller.flight_scout.dto;
+package pl.kmuller.flight_scout.dto.auth;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

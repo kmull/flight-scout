@@ -1,4 +1,4 @@
-package pl.kmuller.flight_scout.dto;
+package pl.kmuller.flight_scout.dto.flight;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;

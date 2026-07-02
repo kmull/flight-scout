@@ -3,9 +3,9 @@ package pl.kmuller.flight_scout.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
-import pl.kmuller.flight_scout.dto.FlightOfferDto;
-import pl.kmuller.flight_scout.dto.FlightSearchRequest;
-import pl.kmuller.flight_scout.dto.FlightSliceDto;
+import pl.kmuller.flight_scout.dto.flight.FlightOfferDto;
+import pl.kmuller.flight_scout.dto.flight.FlightSearchRequest;
+import pl.kmuller.flight_scout.dto.flight.FlightSliceDto;
 import pl.kmuller.flight_scout.dto.duffel.*;
 
 import java.math.BigDecimal;

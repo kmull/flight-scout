@@ -5,14 +5,17 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import pl.kmuller.flight_scout.dto.FlightOfferDto;
-import pl.kmuller.flight_scout.dto.FlightSearchRequest;
+import pl.kmuller.flight_scout.dto.flight.FlightOfferDto;
+import pl.kmuller.flight_scout.dto.flight.FlightSearchRequest;
 import pl.kmuller.flight_scout.enums.CabinClass;
 import pl.kmuller.flight_scout.service.FlightSearchService;
+import pl.kmuller.flight_scout.service.SearchHistoryService;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -24,6 +27,7 @@ import java.util.List;
 public class FlightController {
 
     private final FlightSearchService flightSearchService;
+    private final SearchHistoryService searchHistoryService;
 
     @GetMapping("/search")
     @Operation(summary = "Wyszukaj loty", description = "Zwraca listę dostępnych ofert lotów na podstawie podanych parametrów")
@@ -47,7 +51,9 @@ public class FlightController {
             @RequestParam(defaultValue = "ECONOMY") CabinClass cabinClass,
 
             @Parameter(description = "Maksymalna liczba zwracanych ofert", example = "20")
-            @RequestParam(defaultValue = "20") Integer limit
+            @RequestParam(defaultValue = "20") Integer limit,
+
+            @AuthenticationPrincipal UserDetails userDetails
     ) {
 
         FlightSearchRequest request = FlightSearchRequest.builder()
@@ -60,6 +66,11 @@ public class FlightController {
                 .limit(limit)
                 .build();
 
-        return flightSearchService.searchFlights(request);
+        List<FlightOfferDto> results = flightSearchService.searchFlights(request);
+
+        if (userDetails != null) {
+            searchHistoryService.saveAsync(request, results.size(), userDetails.getUsername());
+        }
+        return results;
     }
 }

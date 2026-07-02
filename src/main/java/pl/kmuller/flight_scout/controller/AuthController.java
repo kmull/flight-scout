@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pl.kmuller.flight_scout.dto.AuthRequest;
-import pl.kmuller.flight_scout.dto.AuthResponse;
+import pl.kmuller.flight_scout.dto.auth.AuthRequest;
+import pl.kmuller.flight_scout.dto.auth.AuthResponse;
 import pl.kmuller.flight_scout.service.AuthService;
 
 @RestController
